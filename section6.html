@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDD - بخش ششم: بنیان فنی</title>
+    <style>
+        /* CSS کامل و یکسان با صفحات دیگر در اینجا قرار دارد */
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Lalezar&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap');
+        :root {
+            --font-pixel: 'Press Start 2P', cursive;
+            --font-title-fa: 'Lalezar', cursive;
+            --font-body: 'Vazirmatn', sans-serif;
+            --font-code: Consolas, 'Courier New', Courier, monospace; /* فونت جدید برای کد */
+            --color-sky-bg: #92c7c7;
+            --color-grass: #6ab04c;
+            --color-dirt: #8c6b5d;
+            --color-text: #f7f1e3;
+            --color-dark-text: #2c3a47;
+            --color-pinko: #e84393;
+            --color-apple: #e74c3c;
+            --color-accent: #f1c40f; /* زرد برای آیتم‌های تعاملی */
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: var(--color-sky-bg);
+            background-image:
+                linear-gradient(45deg, #a4d4d4 25%, transparent 25%), 
+                linear-gradient(-45deg, #a4d4d4 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #a4d4d4 75%),
+                linear-gradient(-45deg, transparent 75%, #a4d4d4 75%);
+            background-size: 40px 40px;
+            font-family: var(--font-body);
+            color: var(--color-text);
+            padding: 2rem 0;
+        }
+        .page {
+            background: var(--color-dirt);
+            width: 21cm;
+            min-height: 29.7cm;
+            padding: 40px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 8px solid #5d4037;
+            box-sizing: border-box;
+            position: relative;
+        }
+        .grass-top {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: var(--color-grass);
+            border-bottom: 8px solid #4a8a3a;
+        }
+        .page-content { position: relative; z-index: 1; }
+        h2 { 
+            font-family: var(--font-title-fa);
+            font-size: 38px;
+            color: #fff;
+            text-shadow: 3px 3px 0px #443028;
+            border-bottom: 5px solid #4a8a3a;
+            padding-bottom: 15px;
+            margin-top: 40px;
+            margin-bottom: 25px;
+        }
+        h3 {
+            font-family: var(--font-title-fa);
+            font-size: 28px;
+            color: var(--color-pinko);
+            text-shadow: 2px 2px 0 #5d4037;
+            margin-top: 35px;
+            margin-bottom: 15px;
+        }
+        p { font-size: 17px; line-height: 2; text-align: justify; color: var(--color-text); }
+        ul { list-style: none; padding: 0; }
+        li {
+            background: rgba(0,0,0,0.15);
+            padding: 15px 20px;
+            margin-bottom: 12px;
+            border-left: 5px solid var(--color-pinko);
+            font-weight: 500;
+        }
+        .code-highlight {
+            background-color: rgba(0,0,0,0.4);
+            padding: 2px 8px;
+            border-radius: 5px;
+            font-family: var(--font-code); /* استفاده از فونت کد جدید */
+            font-size: 16px;
+            color: var(--color-accent);
+            border: 2px solid rgba(0,0,0,0.2);
+            direction: ltr; /* اطمینان از نمایش صحیح کد انگلیسی */
+            display: inline-block; /* برای اعمال صحیح استایل */
+        }
+        .image-container {
+            margin: 2rem 0;
+            border: 5px solid #5d4037;
+            box-shadow: 6px 6px 0px rgba(0,0,0,0.2);
+            overflow: hidden;
+            background: #5d4037;
+        }
+        .image-container img {
+            width: 100%;
+            display: block;
+        }
+        .page-nav { display:flex; justify-content:space-between; align-items: center; margin-bottom: 2rem; border-bottom: 6px solid #5d4037; padding-bottom: 1rem;}
+        .nav-button { text-decoration: none; font-family: var(--font-body); font-weight: 700; background-color: var(--color-dirt); color: #fff; padding: 10px 20px; border: 3px solid #5d4037; border-bottom-width: 6px; transition: all 0.1s ease; }
+        .nav-button:hover { background-color: var(--color-pinko); border-color: #a02c63;}
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="grass-top"></div>
+        <div class="page-content">
+            <nav class="page-nav">
+                <a href="section5.html" class="nav-button">&lt; بخش قبلی</a>
+                <a href="index.html" class="nav-button">بازگشت به فهرست</a>
+                <span></span> </nav>
+
+            <section id="section-6">
+                <h2 class="section-title">۶. موتور بازی</h2>
+                <p>
+                    در این بخش، به بررسی زیرساخت‌های فنی بازی "Rust and Roots" و قابلیت‌های کلیدی موتور بازی‌سازی گودو (Godot Engine) که این پروژه بر پایه آن ساخته شده است، می‌پردازیم.
+                </p>
+
+                <div class="image-container">
+                    <img src="images/godot_editor_screenshot.png" alt="محیط ویرایشگر گودو">
+                </div>
+
+                <h3>۶.۱. معرفی موتور گودو و قابلیت‌های استفاده شده در پروژه</h3>
+                <p>
+                    انتخاب موتور گودو برای این پروژه به دلیل انعطاف‌پذیری بالا، معماری قدرتمند و ابزارهای کارآمد آن برای ساخت بازی‌های دوبعدی بوده است. قابلیت‌های کلیدی که ما از آن‌ها بهره برده‌ایم عبارتند از:
+                </p>
+                <ul>
+                    <li><strong>معماری صحنه و نود (Scene & Node):</strong> ساختار اصلی بازی بر پایه سیستم صحنه و نود گودو استوار است. هر عنصر در بازی، از شخصیت اصلی (پینکو) گرفته تا دشمنان، گلوله‌ها و حتی منوی اصلی، یک صحنه مجزا است. این رویکرد ما را قادر می‌سازد تا کامپوننت‌های بازی را به صورت مستقل توسعه داده و به راحتی در مراحل مختلف از آن‌ها استفاده مجدد کنیم.</li>
+                    <li><strong>زبان اسکریپت‌نویسی GDScript:</strong> تمام منطق بازی، از حرکت بازیکن گرفته تا هوش مصنوعی دشمنان، با استفاده از <span class="code-highlight">GDScript</span> پیاده‌سازی شده است. این زبان به دلیل سینتکس ساده و شبیه به پایتون و C# و همچنین یکپارچگی عمیق با موتور گودو، سرعت توسعه را به شدت افزایش داده و خوانایی کدها را بالا برده است.</li>
+                    <li><strong>سیستم فیزیک و برخورد (Physics & Collision):</strong> گودو یک سیستم فیزیک دوبعدی قدرتمند ارائه می‌دهد که ما از آن به طور گسترده استفاده کرده‌ایم:
+                        <ul>
+                            <li><span class="code-highlight">CharacterBody2D:</span> برای شخصیت اصلی، پینکو، استفاده شده است تا با استفاده از تابع <span class="code-highlight">move_and_slide()</span>، حرکتی روان و مبتنی بر فیزیک داشته باشد.</li>
+                            <li><span class="code-highlight">Area2D:</span> برای تشخیص همپوشانی بدون ایجاد برخورد فیزیکی استفاده شده است. این نود برای آیتم‌های جمع‌کردنی (سیب‌ها)، مناطق مرگبار و ترامپولین‌ها حیاتی است.</li>
+                        </ul>
+                    </li>
+                    <li><strong>مدیریت ورودی و انیمیشن:</strong> سیستم <span class="code-highlight">Input Map</span> گودو به ما اجازه داده تا کنترل‌های بازی (حرکت، پرش، شلیک) را به سادگی تعریف و مدیریت کنیم. برای انیمیشن‌های پیکسلی شخصیت‌ها و دشمنان نیز از نود <span class="code-highlight">AnimatedSprite2D</span> استفاده شده است که قابلیت پخش انیمیشن‌های مختلف بر اساس وضعیت بازیکن را فراهم می‌کند.</li>
+                    <li><strong>سیگنال‌ها و مدیریت وضعیت سراسری:</strong> یکی از قدرتمندترین ویژگی‌های گودو، سیستم سیگنال (<span class="code-highlight">Signal</span>) آن است که به نودها اجازه می‌دهد بدون نیاز به ارتباط مستقیم، با یکدیگر صحبت کنند. ما از سیگنال‌هایی مانند <span class="code-highlight">body_entered</span> و <span class="code-highlight">animation_finished</span> برای پیاده‌سازی منطق‌های مختلف بازی بهره برده‌ایم. علاوه بر این، از قابلیت <span class="code-highlight">Autoload</span> برای ایجاد نودهای سراسری مانند <span class="code-highlight">Music</span> استفاده کرده‌ایم تا موسیقی و افکت‌های صوتی در تمام صحنه‌ها در دسترس باشند.</li>
+                </ul>
+            </section>
+        </div>
+    </div>
+</body>
+</html>
