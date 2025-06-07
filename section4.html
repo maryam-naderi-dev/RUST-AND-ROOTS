@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDD - بخش چهارم: هویت بصری و صوتی</title>
+    <style>
+        /* CSS کامل و یکسان با صفحات دیگر در اینجا قرار دارد */
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Lalezar&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap');
+        :root {
+            --font-pixel: 'Press Start 2P', cursive;
+            --font-title-fa: 'Lalezar', cursive;
+            --font-body: 'Vazirmatn', sans-serif;
+            --color-sky-bg: #92c7c7;
+            --color-grass: #6ab04c;
+            --color-dirt: #8c6b5d;
+            --color-text: #f7f1e3;
+            --color-dark-text: #2c3a47;
+            --color-pinko: #e84393;
+            --color-apple: #e74c3c;
+            --color-accent: #f1c40f; /* زرد برای آیتم‌های تعاملی */
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: var(--color-sky-bg);
+            background-image:
+                linear-gradient(45deg, #a4d4d4 25%, transparent 25%), 
+                linear-gradient(-45deg, #a4d4d4 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #a4d4d4 75%),
+                linear-gradient(-45deg, transparent 75%, #a4d4d4 75%);
+            background-size: 40px 40px;
+            font-family: var(--font-body);
+            color: var(--color-text);
+            padding: 2rem 0;
+        }
+        .page {
+            background: var(--color-dirt);
+            width: 21cm;
+            min-height: 29.7cm;
+            padding: 40px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 8px solid #5d4037;
+            box-sizing: border-box;
+            position: relative;
+        }
+        .grass-top {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: var(--color-grass);
+            border-bottom: 8px solid #4a8a3a;
+        }
+        .page-content { position: relative; z-index: 1; }
+        h2 { 
+            font-family: var(--font-title-fa);
+            font-size: 38px;
+            color: #fff;
+            text-shadow: 3px 3px 0px #443028;
+            border-bottom: 5px solid #4a8a3a;
+            padding-bottom: 15px;
+            margin-top: 40px;
+            margin-bottom: 25px;
+        }
+        h3 {
+            font-family: var(--font-title-fa);
+            font-size: 28px;
+            color: var(--color-pinko);
+            text-shadow: 2px 2px 0 #5d4037;
+            margin-top: 35px;
+            margin-bottom: 15px;
+        }
+        h4 {
+            font-family: var(--font-pixel);
+            font-size: 18px;
+            color: var(--color-apple);
+            text-shadow: 1px 1px 0 #5d4037;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 2px dotted rgba(255,255,255,0.2);
+            padding-bottom: 10px;
+        }
+        p { font-size: 17px; line-height: 2; text-align: justify; color: var(--color-text); }
+        ul { list-style: none; padding: 0; }
+        li {
+            background: rgba(0,0,0,0.15);
+            padding: 15px 20px;
+            margin-bottom: 12px;
+            border-left: 5px solid var(--color-pinko);
+            font-weight: 500;
+        }
+        .page-nav { display:flex; justify-content:space-between; align-items: center; margin-bottom: 2rem; border-bottom: 6px solid #5d4037; padding-bottom: 1rem;}
+        .nav-button { text-decoration: none; font-family: var(--font-body); font-weight: 700; background-color: var(--color-dirt); color: #fff; padding: 10px 20px; border: 3px solid #5d4037; border-bottom-width: 6px; transition: all 0.1s ease; }
+        .nav-button:hover { background-color: var(--color-pinko); border-color: #a02c63;}
+        .level-showcase { margin-top: 20px; text-align: center; }
+        .level-showcase img { width: 90%; display: block; image-rendering: pixelated; border: 5px solid #5d4037; margin: 10px auto; }
+        
+        /* استایل‌های جدید برای دکمه‌های پخش صدا */
+        .sfx-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .play-sfx-button {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            background-color: #4a4a4a;
+            border: 3px solid var(--color-dark-shadow);
+            border-bottom-width: 5px;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.1s ease;
+            flex-shrink: 0;
+        }
+        .play-sfx-button:hover { background-color: var(--color-secondary); }
+        .play-sfx-button:active { transform: translateY(2px); border-bottom-width: 3px; }
+        .play-sfx-button::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-40%, -50%);
+            width: 0;
+            height: 0;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            border-left: 12px solid #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="grass-top"></div>
+        <div class="page-content">
+            <nav class="page-nav">
+                <a href="section3.html" class="nav-button">&lt; بخش قبلی</a>
+                <a href="index.html" class="nav-button">بازگشت به فهرست</a>
+                <a href="section5.html" class="nav-button">بخش بعدی &gt;</a>
+            </nav>
+
+            <section id="section-4">
+                <h2 class="section-title">۴. هویت بصری و صوتی</h2>
+                <p>
+                    در این بخش، به تعریف حس و حال هنری و شنیداری بازی می‌پردازیم. هدف ما خلق یک اتمسفر به‌یادماندنی است که داستان و گیم‌پلی را به بهترین شکل تکمیل کند.
+                </p>
+
+                <h3>کارگردانی هنری: تضاد طبیعت و صنعت</h3>
+                <p>
+                    هدف ما در طراحی بصری "Rust and Roots"، خلق دنیایی است که همزمان حس نوستالژی بازی‌های کلاسیک را زنده کند و هم هویت منحصربه‌فرد خود را داشته باشد.
+                </p>
+
+                <h4>سبک هنری و پالت رنگی</h4>
+                <p>
+                    سبک اصلی، هنر پیکسلی (Pixel Art) است که با دقت و ظرافت اجرا می‌شود تا جزئیات محیط و شخصیت‌ها به خوبی قابل تشخیص باشند. پالت رنگی بازی بر اساس تم هر مرحله به صورت پویا تغییر می‌کند تا تضاد بین طبیعت و ماشین را به زیبایی به تصویر بکشد:
+                </p>
+                <div class="level-showcase">
+                    <h5>مرحله اول (جنگل سرسبز)</h5>
+                    <p>در این مرحله از رنگ‌های سبز شاداب، قهوه‌ای‌های خاکی و آبی زنده برای نمایش "ریشه‌ها" و امید به زندگی استفاده می‌شود.</p>
+                    <img src="images/level1_showcase.png" alt="محیط مرحله اول">
+                </div>
+                <div class="level-showcase">
+                    <h5>مرحله دوم (دره‌های گرم)</h5>
+                    <p>پالت رنگی به سمت زرد، نارنجی و قرمزهای گرم متمایل می‌شود تا حس یک محیط خشک‌تر، پاییزی و صنعتی‌تر را القا کند و نفوذ "زنگار" را نشان دهد.</p>
+                    <img src="images/level2_showcase.png" alt="محیط مرحله دوم">
+                </div>
+
+                <h4>طراحی شخصیت و محیط</h4>
+                <p>
+                    طراحی پینکو ساده، کوچک و دوست‌داشتنی است تا بازیکن به سرعت با او ارتباط برقرار کند. در مقابل، دشمنان مانند کله تیغی ظاهری سخت و مکانیکی دارند. این تضاد در محیط نیز دیده می‌شود، جایی که گیاهان و درختان از دل سکوهای فلزی و آجرهای فرسوده بیرون زده‌اند و داستانی خاموش از گذشته‌ی این سرزمین را روایت می‌کنند.
+                </p>
+
+                <h3>طراحی صدا: سمفونی ریشه و زنگار</h3>
+                <p>
+                    صدا و موسیقی در "Rust and Roots" نقشی حیاتی در ساختن اتمسفر و ارائه بازخورد به بازیکن دارد.
+                </p>
+                <h4>موسیقی متن</h4>
+                <p>
+                    موسیقی بازی ترکیبی از ملودی‌های ماجراجویانه و تم‌های آرام خواهد بود. این موسیقی باید انقدری جذاب باشد که برای بازیکن یه خاطره ماندگار را به جا بگذارد.
+                </p>
+                <h4>افکت‌های صوتی کلیدی (SFX)</h4>
+                <p>
+                    این افکت ها به بازی روح میدهند و حس خوبی را به بازیکن القا میکنند. این صداها بازی رو از حالت خشکی دراورده و به حرکات کاراکتر جلوه میدهد. افکت‌های صوتی باید کوتاه، واضح و رضایت‌بخش باشند تا هر عمل بازیکن بازخورد شنیداری مناسبی داشته باشد:
+                </p>
+                <ul>
+                    <li class="sfx-item">
+                        <span class="play-sfx-button" data-sfx="sfx/jump.wav"></span>
+                        <p><strong>صدای پرش و پرش دوتایی:</strong> صدایی فنری و پرانرژی برای ایجاد حس خوب در حرکت.</p>
+                    </li>
+                    <li class="sfx-item">
+                        <span class="play-sfx-button" data-sfx="sfx/shoot.wav"></span>
+                        <p><strong>صدای تیراندازی:</strong> یک صدای "پیو" مانند کوتاه و سریع که حس قدرت را منتقل کند.</p>
+                    </li>
+                    <li class="sfx-item">
+                        <span class="play-sfx-button" data-sfx="sfx/collect.wav"></span>
+                        <p><strong>صدای جمع‌آوری میوه:</strong> صدایی دلنشین و تشویق‌کننده که به بازیکن پاداش دهد.</p>
+                    </li>
+                    <li class="sfx-item">
+                        <span class="play-sfx-button" data-sfx="sfx/explosion.wav"></span>
+                        <p><strong>صدای انفجار دشمن:</strong> یک صدای انفجار پیکسلی کوتاه و رضایت‌بخش.</p>
+                    </li>
+                     <li class="sfx-item">
+                        <span class="play-sfx-button" data-sfx="sfx/death.wav"></span>
+                        <p><strong>صدای مرگ پینکو:</strong> یک صدای کوتاه و تأثیرگذار که شکست را به خوبی نشان دهد.</p>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sfxButtons = document.querySelectorAll('.play-sfx-button');
+            sfxButtons.forEach(button => {
+                const audioSrc = button.getAttribute('data-sfx');
+                if (audioSrc) {
+                    const audio = new Audio(audioSrc);
+                    button.addEventListener('click', () => {
+                        audio.currentTime = 0;
+                        audio.play().catch(e => console.error("Error playing sound:", e));
+                    });
+                }
+            });
+        });
+    </script>
+    </body>
+</html>

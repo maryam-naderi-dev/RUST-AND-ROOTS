@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDD: Rust and Roots - صفحه اصلی</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Lalezar&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap');
+
+        :root {
+            --font-pixel: 'Press Start 2P', cursive;
+            --font-title-fa: 'Lalezar', cursive;
+            --font-body: 'Vazirmatn', sans-serif;
+            
+            /* پالت رنگی جدید از محیط بازی */
+            --color-sky-bg: #92c7c7; /* رنگ آسمان بازی */
+            --color-grass: #6ab04c;  /* سبز چمن */
+            --color-dirt: #8c6b5d;   /* قهوه‌ای خاک */
+            --color-text: #f7f1e3;   /* کرم روشن برای متن */
+            --color-dark-text: #2c3a47; /* متن تیره‌تر برای کنتراست */
+            --color-pinko: #e84393;  /* صورتی پینکو */
+            --color-apple: #e74c3c;  /* قرمز سیب */
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--color-sky-bg);
+            background-image:
+                linear-gradient(45deg, #a4d4d4 25%, transparent 25%), 
+                linear-gradient(-45deg, #a4d4d4 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #a4d4d4 75%),
+                linear-gradient(-45deg, transparent 75%, #a4d4d4 75%);
+            background-size: 40px 40px;
+            font-family: var(--font-body);
+            color: var(--color-text);
+            padding: 2rem 0;
+            margin: 0;
+        }
+
+        .page {
+            background: var(--color-dirt);
+            width: 21cm;
+            min-height: 29.7cm;
+            padding: 40px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 8px solid #5d4037; /* یک حاشیه تیره‌تر شبیه لبه‌های خاک */
+            box-sizing: border-box;
+            position: relative;
+        }
+        
+        .grass-top {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px; /* ارتفاع لایه چمن */
+            background: var(--color-grass);
+            border-bottom: 8px solid #4a8a3a; /* سایه چمن */
+        }
+
+        .page-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .main-header {
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 2rem;
+        }
+        h1 {
+            font-family: var(--font-pixel);
+            font-size: 42px;
+            color: #fff;
+            text-shadow: 4px 4px 0px var(--color-apple);
+            margin: 0;
+        }
+        
+        .toc-container {
+            background: rgba(0,0,0,0.25);
+            border: 4px solid rgba(0,0,0,0.3);
+            padding: 25px;
+            margin: 40px auto;
+            max-width: 90%;
+        }
+        .toc-title {
+            font-family: var(--font-pixel);
+            font-size: 22px;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 30px;
+            color: #fff;
+            text-shadow: 3px 3px 0 var(--color-pinko);
+        }
+        .toc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .toc-link {
+            display: block;
+            text-decoration: none;
+            font-family: var(--font-body);
+            font-weight: 700;
+            font-size: 16px;
+            background-color: #5d4037; /* دکمه‌هایی به رنگ خاک تیره‌تر */
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            border: 3px solid #443028;
+            border-bottom-width: 6px;
+            transition: all 0.1s ease-in-out;
+            cursor: pointer;
+        }
+        .toc-link:hover {
+            background-color: var(--color-pinko);
+            border-color: #a02c63;
+        }
+        .toc-link:active {
+            transform: translateY(3px);
+            border-bottom-width: 3px;
+        }
+
+        .footer-character {
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-character img {
+            width: 96px;
+            image-rendering: pixelated;
+        }
+        
+        @media print {
+            body { background: #fff; padding: 0;}
+            .page { box-shadow: none; border: 2px solid #000; margin: 0; }
+            .grass-top { background: #ccc; border: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        <div class="grass-top"></div>
+        <div class="page-content">
+            <header class="main-header">
+                <h1>Rust and Roots</h1>
+            </header>
+            
+            <nav class="toc-container">
+                <h2 class="toc-title">Game Design Document</h2>
+                <div class="toc-grid">
+                    <a href="section1.html" class="toc-link">۱. معرفی و چشم‌انداز کلی</a>
+                    <a href="section2.html" class="toc-link">۲. گیم‌پلی و مکانیک‌ها</a>
+                    <a href="section3.html" class="toc-link">۳. روایت و دنیاسازی</a>
+                    <a href="section4.html" class="toc-link">۴. هویت بصری و صوتی</a>
+                    <a href="section5.html" class="toc-link">۵. رابط کاربری و کنترل‌ها</a>
+                    <a href="section6.html" class="toc-link">۶. بنیان فنی و موتور بازی</a>
+                </div>
+            </nav>
+            
+            <div class="footer-character">
+                <img src="images/pinko.png" alt="Pinko">
+                <p style="font-family: var(--font-pixel); color: var(--color-text); margin-top:1rem; font-size:12px;">A GDD by Maryam Naderi</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
