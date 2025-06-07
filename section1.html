@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDD - بخش اول: معرفی و چشم‌انداز کلی</title>
+    <style>
+        /* CSS کامل و یکسان با صفحات دیگر در اینجا قرار دارد */
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Lalezar&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap');
+        :root {
+            --font-pixel: 'Press Start 2P', cursive;
+            --font-title-fa: 'Lalezar', cursive;
+            --font-body: 'Vazirmatn', sans-serif;
+            --color-sky-bg: #92c7c7;
+            --color-grass: #6ab04c;
+            --color-dirt: #8c6b5d;
+            --color-text: #f7f1e3;
+            --color-dark-text: #2c3a47;
+            --color-pinko: #e84393;
+            --color-apple: #e74c3c;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: var(--color-sky-bg);
+            background-image:
+                linear-gradient(45deg, #a4d4d4 25%, transparent 25%), 
+                linear-gradient(-45deg, #a4d4d4 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #a4d4d4 75%),
+                linear-gradient(-45deg, transparent 75%, #a4d4d4 75%);
+            background-size: 40px 40px;
+            font-family: var(--font-body);
+            color: var(--color-text);
+            padding: 2rem 0;
+        }
+        .page {
+            background: var(--color-dirt);
+            width: 21cm;
+            min-height: 29.7cm;
+            padding: 40px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 8px solid #5d4037;
+            box-sizing: border-box;
+            position: relative;
+        }
+        .grass-top {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: var(--color-grass);
+            border-bottom: 8px solid #4a8a3a;
+        }
+        .page-content { position: relative; z-index: 1; }
+        h2 { 
+            font-family: var(--font-title-fa);
+            font-size: 38px;
+            color: #fff;
+            text-shadow: 3px 3px 0px #443028;
+            border-bottom: 5px solid #4a8a3a;
+            padding-bottom: 15px;
+            margin-top: 40px;
+            margin-bottom: 25px;
+        }
+        h3 {
+            font-family: var(--font-title-fa);
+            font-size: 28px;
+            color: var(--color-pinko);
+            text-shadow: 2px 2px 0 #5d4037;
+            margin-top: 35px;
+            margin-bottom: 15px;
+        }
+        p { font-size: 17px; line-height: 2; text-align: justify; color: var(--color-text); }
+        ul { list-style: none; padding: 0; }
+        li {
+            background: rgba(0,0,0,0.15);
+            padding: 15px 20px 15px 35px;
+            margin-bottom: 12px;
+            border-left: 5px solid var(--color-pinko);
+            font-weight: 500;
+        }
+        strong { font-weight: 700; color: #fff; }
+        .hero-image-container { margin: 2.5rem 0; border: 5px solid #5d4037; box-shadow: 6px 6px 0px rgba(0,0,0,0.2); overflow: hidden; background: #5d4037; }
+        .hero-image { width: 100%; display: block; image-rendering: pixelated; image-rendering: -moz-crisp-edges; image-rendering: crisp-edges; }
+        .page-nav { display:flex; justify-content:space-between; align-items: center; margin-bottom: 2rem; border-bottom: 6px solid #5d4037; padding-bottom: 1rem;}
+        .nav-button { text-decoration: none; font-family: var(--font-body); font-weight: 700; background-color: var(--color-dirt); color: #fff; padding: 10px 20px; border: 3px solid #5d4037; border-bottom-width: 6px; transition: all 0.1s ease; }
+        .nav-button:hover { background-color: var(--color-pinko); border-color: #a02c63;}
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="grass-top"></div>
+        <div class="page-content">
+            <nav class="page-nav">
+                <a href="index.html" class="nav-button">بازگشت به فهرست</a>
+                <span></span> <a href="section2.html" class="nav-button">بخش بعدی &gt;</a>
+            </nav>
+
+            <section id="section-1">
+                <h2 class="section-title">۱. معرفی و چشم‌انداز کلی</h2>
+                
+                <div class="hero-image-container">
+                    <img src="images/main_gameplay_image.png" alt="تصویری از گیم‌پلی بازی Rust and Roots" class="hero-image">
+                </div>
+
+                <h3>ایده اصلی: یک ماجراجویی رنگارنگ</h3>
+                <p>
+                    "Rust and Roots" یک بازی پلتفرمر اکشن و جذاب است که شما را در نقش پینکو، یک قهرمان کوچک اما پرجنب و جوش، قرار می‌دهد. وقتی "درخت زندگی" در دنیای پینکو شروع به خشک شدن می‌کند، او برای نجات خانه‌اش راهی یک ماجراجویی خطرناک می‌شود. ماموریت شما ساده اما حیاتی است: سفر به "سرزمین‌های رنگارنگ"، از جنگل‌های سرسبز گرفته تا دره‌های گرم و پاییزی و جمع‌آوری میوه‌های جادویی. پینکو باید تلاش کند که با چالش های پیش روش مقابله کند و میوه هارو جمع آوری کند. وقتی که به اندازه کافی میوه جمع آوری کرد میتواند به مراحل بعدی سفر کند و در آخر درخت زندگی را به حیات بازگرداند. این فقط یک بازی برای جمع کردن آیتم نیست؛ یک تلاش برای بازگرداندن امید به دنیایی رو به زوال است.
+                </p>
+
+                <h3>ژانر و سبک گیم‌پلی</h3>
+                <p>
+                    این بازی یک پلتفرمر دقیق (Precision Platformer) با تمرکز بر حرکت روان و مبارزات سریع است. هسته اصلی گیم‌پلی بر پایه موارد زیر بنا شده:
+                    <ul>
+                        <li><b>کنترل دقیق و پاسخ‌گو:</b> سیستمی که به بازیکن اجازه می‌دهد با استفاده از پرش‌های پیشرفته و تیراندازی، بر محیط مسلط شود.</li>
+                        <li><b>چالش‌های مبتنی بر مهارت:</b> هر مرحله طوری طراحی شده که مهارت‌های بازیکن در زمان‌بندی، جاخالی دادن و واکنش سریع را به چالش بکشد.</li>
+                        <li><b>اکتشاف و جمع‌آوری:</b> بازیکن برای پیشرفت، تشویق می‌شود تا تمام میوه‌های هر مرحله پیدا کند.</li>
+                    </ul>
+                </p>
+
+                <h3>مخاطب هدف</h3>
+                <p>
+                    این بازی برای بازیکنانی ساخته شده که:
+                    <ul>
+                        <li>از بازی‌های پلتفرمر چالش‌برانگیز لذت می‌برند.</li>
+                        <li>به هنر پیکسلی زنده و رنگارنگ علاقه‌مند هستند.</li>
+                        <li>به بازی های قدیمی علاقه دارند و یک حس نوستالوژی را به پلیر میدهد.</li>
+                    </ul>
+                </p>
+
+                <h3>فلسفه طراحی ما</h3>
+                <p>
+                    ما در طراحی "Rust and Roots" سه هدف اصلی را دنبال می‌کنیم:
+                    <ul>
+                        <li><b>کنترل روان و بی‌نقص:</b> هر پرش و هر شلیک باید دقیقاً همانطور که بازیکن اراده می‌کند، اجرا شود. هدف ما این است که بازیکن هرگز کنترل را مقصر شکست‌هایش نداند و احساس تسلط کامل بر پینکو داشته باشد.</li>
+                        <li><b>دنیایی زنده و پر از تضاد:</b> هر مرحله با پالت رنگی و طراحی منحصر به فرد خود، یک هویت بصری مستقل دارد. این دنیاهای رنگارنگ، در تضاد با دشمنان مکانیکی و بی‌روح قرار می‌گیرند تا تم اصلی بازی یعنی "ریشه و زنگار" را تقویت کنند.</li>
+                        <li><b>چالش پاداش‌بخش:</b> سختی بازی به گونه‌ای تنظیم شده که بازیکن را به یادگیری و بهتر شدن تشویق کند. پاداش اصلی، تنها تمام کردن مرحله نیست، بلکه حس شیرین تسلط بر چالشی است که در ابتدا سخت به نظر می‌رسید.</li>
+                    </ul>
+                </p>
+            </section>
+        </div>
+    </div>
+</body>
+</html>
